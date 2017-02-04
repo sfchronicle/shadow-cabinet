@@ -1,0 +1,119 @@
+.intro{
+	padding:1em 0;
+	font-family:@med-graphics;
+	text-align:center;
+	p{
+	font-size:0.9em;
+	max-width:650px;
+	padding:0;
+
+	@media @mobile{
+	font-size:0.7em;
+	}
+	}
+
+	background-image:url(./assets/seal.png);
+	background-size:cover;
+
+	@media @mobile{
+	    background-size: contain;
+    background-position: top;
+    background-repeat: no-repeat;
+	}
+}
+
+img{width:100%}
+
+.cabinet{
+	display: none;
+	font-family:@med-graphics;
+	margin-bottom:2em;
+
+	&.current{
+	display:block;
+	}	
+}
+
+#inputform{
+	position: absolute;
+  bottom: 12%;
+  left: 0;
+  right: 0;
+  padding: 0 4%;
+}
+
+#cabinet-select{
+	display:none;
+	padding: 2em 0;
+	max-width: 600px;
+  position: relative;
+}
+
+#offices{
+	.display-flex;
+	.justify-content(center);
+}
+
+.cabinet{
+min-width:300px;
+text-align:center;
+p{
+	font-size:1em;
+}
+}
+
+.btn-group{
+  bottom: 0;
+  right: 1%	;
+  position:absolute;
+}
+
+.btn {
+  -webkit-border-radius: 4;
+  -moz-border-radius: 4;
+  border-radius: 4px;
+  color: #ffffff;
+  font-size: 15px;
+  background: #9e9e9e;
+  cursor:pointer;
+  font-family:@med-graphics;
+  text-transform: uppercase;
+  padding: 7px 9px;
+  border:none;
+  letter-spacing:1px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  text-decoration: none;
+  color: #333;
+}
+
+[disabled="disabled"] {
+  
+  background-color:#d0d0d0;
+  cursor:default;
+
+  &:hover{
+  	color:#fff;
+  }
+}
+
+
+input[type="text"] {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: @med-graphics;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+
+  padding: 10px;
+  border: solid 1px #dcdcdc;
+  transition: box-shadow 0.3s, border 0.3s;
+}
+input[type="text"]:focus {
+  outline: none;
+}

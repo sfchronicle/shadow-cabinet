@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.seo_title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="__sync_contentCategory" content="meterA">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="http://projects.sfchronicle.com/shared/js/jquery.min.js"></script>
+
+    <%= !json.project.embedded ? t.include("partials/_paywall.html") : t.include("partials/_embedframe.html") %>
+
+
+  </head>
+
+  <%= !json.project.embedded ? "<body>" : "<body is='responsive-body'>" %>
+
+
+
+    <div id="offices">
+
+      <div class="intro">
+          <h1>Who would you choose?</h1>
+          <p>Similar to assembling a fantasy football team, The Chronicle invites you to assemble your dream team to play in the big leagues of federal government. Your nominees should reflect your views – be they left, right, solidly in the middle or independent minded.</p>
+          <button class="start btn">Begin</button>
+        </div>
+     
+      <div id="cabinet-select">
+      <img src="./assets/seal.png">
+
+      <form  id="inputform" action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="submit">
+        
+
+  
+
+
+        <div class="cabinet first current">
+          <p>Vice President</p>
+          <input name="name" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of the Treasury</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Attorney General</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Agriculture</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Labor</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Housing and Urban Development</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Energy</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Veterans Affairs</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Homeland Security</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Education</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Transportation</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Health and Human Services</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Commerce</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of the Interior</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of Defense</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+        <div class="cabinet">
+          <p>Secretary of State</p>
+          <input name="email" type="text" value="" />
+        </div>
+
+
+
+        <div class="cabinet last">
+          <p>Submit your answers!</p>
+          <input type="submit" value="Submit" class="btn" />
+        </div>
+        
+      </form>
+      <div class="btn-group">
+        <button class="prev btn" disabled="disabled">Prev</button>
+        <button class="next btn">Next</button>
+      </div>
+    </div>
+      
+
+      
+
+
+    </div>
+
+
+<script>
+
+$('.start').click(function() {
+  $('.intro').hide();
+  $('#cabinet-select').show();
+});
+
+$('.resubmit').click(function() {
+  $('.intro').show();
+  $('#cabinet-select').hide();
+});
+
+$('.next').click(function() {
+    $('.current').removeClass('current')
+        .next().addClass('current');
+    if ($('.current').hasClass('last')) {
+        $('.next').attr('disabled', true);
+    }
+    $('.prev').attr('disabled', null);
+});
+
+$('.prev').click(function() {
+    $('.current').removeClass('current')
+        .prev().addClass('current');
+    if ($('.current').hasClass('first')) {
+        $('.prev').attr('disabled', true);
+    }
+    $('.next').attr('disabled', null);
+});
+
+
+$('#inputform').on('keydown', 'input', function (event) {
+    if (event.which == 13) {
+        event.preventDefault();
+        $('.current').removeClass('current')
+        .next().addClass('current');
+    if ($('.current').hasClass('last')) {
+        $('.next').attr('disabled', true);
+    }
+    $('.prev').attr('disabled', null);
+    }
+});
+</script>
+
+
+
+  </body>
+</html>
