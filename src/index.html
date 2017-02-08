@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="__sync_contentCategory" content="meterA">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css?3">
     <script src="http://projects.sfchronicle.com/shared/js/jquery.min.js"></script>
 
     <%= !json.project.embedded ? t.include("partials/_paywall.html") : t.include("partials/_embedframe.html") %>
@@ -18,116 +18,176 @@
 
 
 
-    <div id="offices">
 
-      <div class="intro">
+
+     <div id="offices">
+
+      
+     
+      <div id="cabinet-select">
+      
+       
+           
+            <div class="intro">
           <h1>Who would you choose?</h1>
           <p>Similar to assembling a fantasy football team, The Chronicle invites you to assemble your dream team to play in the big leagues of federal government. Your nominees should reflect your views – be they left, right, solidly in the middle or independent minded.</p>
           <button class="start btn">Begin</button>
         </div>
-     
-      <div id="cabinet-select">
-      <img src="./assets/seal.png">
+         <div id="input-container">
+
+         <?php 
+          if (!$_POST) {
+
+         ?>
 
       <form  id="inputform" action="" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="action" value="submit">
-        
-
-  
 
 
         <div class="cabinet first current">
+          <img src="./assets/vp.png">
           <p>Vice President</p>
-          <input name="name" type="text" value="" />
+          <input name="VP" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/treasury.png">
           <p>Secretary of the Treasury</p>
-          <input name="email" type="text" value="" />
+          <input name="SOT" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/ag.png">
           <p>Attorney General</p>
-          <input name="email" type="text" value="" />
+          <input name="AG" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/agri.png">
           <p>Secretary of Agriculture</p>
-          <input name="email" type="text" value="" />
+          <input name="SOA" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/labor.png">
           <p>Secretary of Labor</p>
-          <input name="email" type="text" value="" />
+          <input name="SOL" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/hud.png">
           <p>Secretary of Housing and Urban Development</p>
-          <input name="email" type="text" value="" />
+          <input name="SHUD" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/energy.png">
           <p>Secretary of Energy</p>
-          <input name="email" type="text" value="" />
+          <input name="SOEnergy" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/va.png">
           <p>Secretary of Veterans Affairs</p>
-          <input name="email" type="text" value="" />
+          <input name="SVA" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/homeland.png">
           <p>Secretary of Homeland Security</p>
-          <input name="email" type="text" value="" />
+          <input name="SHS" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/ed.png">
           <p>Secretary of Education</p>
-          <input name="email" type="text" value="" />
+          <input name="SOEd" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/trans.png">
           <p>Secretary of Transportation</p>
-          <input name="email" type="text" value="" />
+          <input name="SOTrans" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/health.png">
           <p>Secretary of Health and Human Services</p>
-          <input name="email" type="text" value="" />
+          <input name="SHHS" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/comm.png">
           <p>Secretary of Commerce</p>
-          <input name="email" type="text" value="" />
+          <input name="SOC" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/interior.png">
           <p>Secretary of the Interior</p>
-          <input name="email" type="text" value="" />
+          <input name="SOI" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/defense.png">
           <p>Secretary of Defense</p>
-          <input name="email" type="text" value="" />
+          <input name="SOD" type="text" value="" />
         </div>
 
         <div class="cabinet">
+        <img src="./assets/state.png">
           <p>Secretary of State</p>
-          <input name="email" type="text" value="" />
+          <input name="SOS" type="text" value="" />
         </div>
 
 
 
         <div class="cabinet last">
+        <img src="./assets/seal.png">
           <p>Submit your answers!</p>
-          <input type="submit" value="Submit" class="btn" />
+          <input type="submit" value="Submit" class="btn" id="submit" />
         </div>
         
       </form>
+
       <div class="btn-group">
         <button class="prev btn" disabled="disabled">Prev</button>
         <button class="next btn">Next</button>
       </div>
+      </div>
+
+
+      <?php } else {        
+
+          $to='opinion@sfchronicle.com, lvilla@sfchronicle.com';
+          $subject='Shadow Cabinet Submission';
+          $message=
+            'Vice President:' .                             $_REQUEST["VP"] . "\r\n" .
+            'Secretary of the Treasury:' .                  $_REQUEST["SOT"] . "\r\n" .
+            'Attorney General:' .                           $_REQUEST["AG"] . "\r\n" .
+            'Secretary of Agriculture:' .                   $_REQUEST["SOA"] . "\r\n" .
+            'Secretary of Labor:' .                         $_REQUEST["SOL"] . "\r\n" .
+            'Secretary of Housing and Urban Development:' . $_REQUEST["SHUD"] . "\r\n" .
+            'Secretary of Energy:' .                        $_REQUEST["SOEnergy"] . "\r\n" .
+            'Secretary of Veterans Affairs:' .              $_REQUEST["SVA"] . "\r\n" .
+            'Secretary of Homeland Security:' .             $_REQUEST["SHS"] . "\r\n" .
+            'Secretary of Education:' .                     $_REQUEST["SOEd"] . "\r\n" .
+            'Secretary of Transportation:' .                $_REQUEST["SOT"] . "\r\n" .
+            'Secretary of Health and Human Services:' .     $_REQUEST["SHHS"] . "\r\n" .
+            'Secretary of Commerce:' .                      $_REQUEST["SOC"] . "\r\n" .
+            'Secretary of the Interior:' .                  $_REQUEST["SOI"] . "\r\n" .
+            'Secretary of Defense:' .                       $_REQUEST["SOD"] . "\r\n" .
+            'Secretary of State:' .                         $_REQUEST["SOS"] . "\r\n"
+          ;   
+    
+          mail($to, $subject, $message);
+          header("Location: http://projects.sfchronicle.com/2017/embed-shadow-cabinet/index.php");
+          
+        
+    } ?>
+
+
+      
     </div>
       
 
@@ -138,15 +198,16 @@
 
 
 <script>
+ $('#inputform')[0].reset();
 
 $('.start').click(function() {
   $('.intro').hide();
-  $('#cabinet-select').show();
+  $('#input-container').show();
 });
 
-$('.resubmit').click(function() {
-  $('.intro').show();
-  $('#cabinet-select').hide();
+$('#submit').click(function() {
+  $('.intro').hide();
+  $('#cabinet-select').show();
 });
 
 $('.next').click(function() {

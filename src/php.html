@@ -1,34 +1,47 @@
- <?php
-        $action=$_REQUEST['action'];
-        if ($action=="")    /* display the contact form */
-            {
-            ?>
-            <form  action="" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="action" value="submit">
-            Your name:<br>
-            <input name="name" type="text" value="" size="30"/><br>
-            Your email:<br>
-            <input name="email" type="text" value="" size="30"/><br>
-            Your message:<br>
-            <textarea name="message" rows="7" cols="30"></textarea><br>
-            <input type="submit" value="Send email"/>
-            </form>
-            <?php
-            } 
-        else  
-            {
-            $name=$_REQUEST['name'];
-            $email=$_REQUEST['email'];
-            $message=$_REQUEST['message'];
-            if ($email=="")
-                {
-            echo "All fields are required, please fill <a href=\"\">the form</a> again.";
-              }
-            else{   
-              $from="From: $name<$email>\r\nReturn-path: $email";
-                $subject="Message sent using your contact form";
-            mail("lucio310@gmail.com", $subject, $message, $from);
-            echo "Thank you. <button class='resubmit btn'>Resubmit</button>";
-              }
-            }  
+<?php
+    $action=$_REQUEST['action'];
+    if ($action=="")    /* display the contact form */
+        {
         ?>
+        <form  action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="action" value="submit">
+        Your name:<br>
+        <input name="name" type="text" value="" size="30"/><br>
+        Your email:<br>
+        <input name="email" type="text" value="" size="30"/><br>
+        Your message:<br>
+        <textarea name="message" rows="7" cols="30"></textarea><br>
+        <input type="submit" value="Send email"/>
+        </form>
+        <?php
+        } 
+    else  
+        {
+          $to='lvilla@sfchronicle.com';
+          $subject='Shadow Cabinet Submission';
+          $message='
+
+            Vice President:                             $_REQUEST['VP'] . "\r\n" .
+            Secretary of the Treasury:                  $_REQUEST['SOT'] . "\r\n" .
+            Attorney General:                           $_REQUEST['AG'] . "\r\n" .
+            Secretary of Agriculture:                   $_REQUEST['SOA'] . "\r\n" .
+            Secretary of Labor:                         $_REQUEST['SOL'] . "\r\n" .
+            Secretary of Housing and Urban Development: $_REQUEST['SHUD'] . "\r\n" .
+            Secretary of Energy:                        $_REQUEST['SOEnergy'] . "\r\n" .
+            Secretary of Veterans Affairs:              $_REQUEST['SVA'] . "\r\n" .
+            Secretary of Homeland Security:             $_REQUEST['SHS'] . "\r\n" .
+            Secretary of Education:                     $_REQUEST['SOEd'] . "\r\n" .
+            Secretary of Transportation:                $_REQUEST['SOT'] . "\r\n" .
+            Secretary of Health and Human Services:     $_REQUEST['SHHS'] . "\r\n" .
+            Secretary of Commerce:                      $_REQUEST['SOC'] . "\r\n" .
+            Secretary of the Interior:                  $_REQUEST['SOI'] . "\r\n" .
+            Secretary of Defense:                       $_REQUEST['SOD'] . "\r\n" .
+            Secretary of State:                         $_REQUEST['SOS'] . "\r\n" .
+
+          ';   
+    
+          mail($to, $subject, $message);
+          echo "Thank you. <button class='resubmit btn'>Resubmit</button>";
+        }
+      }  
+    ?>

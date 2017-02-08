@@ -1,7 +1,18 @@
+#input-container{
+  display:none;
+  max-width:500px;
+  width:100%;
+}
+
 .intro{
 	padding:1em 0;
 	font-family:@med-graphics;
 	text-align:center;
+  h1{
+  @media @mobile{
+  font-size:1.3em;
+  }
+  }
 	p{
 	font-size:0.9em;
 	max-width:650px;
@@ -27,23 +38,15 @@ img{width:100%}
 .cabinet{
 	display: none;
 	font-family:@med-graphics;
-	margin-bottom:2em;
+	margin-bottom:1em;
 
 	&.current{
 	display:block;
 	}	
 }
 
-#inputform{
-	position: absolute;
-  bottom: 12%;
-  left: 0;
-  right: 0;
-  padding: 0 4%;
-}
 
 #cabinet-select{
-	display:none;
 	padding: 2em 0;
 	max-width: 600px;
   position: relative;
@@ -55,17 +58,17 @@ img{width:100%}
 }
 
 .cabinet{
-min-width:300px;
 text-align:center;
 p{
-	font-size:1em;
+	font-size:0.85em;
+  @media @mobile{
+  font-size:0.75em;
+  }
 }
 }
 
 .btn-group{
-  bottom: 0;
-  right: 1%	;
-  position:absolute;
+  text-align:right;
 }
 
 .btn {
